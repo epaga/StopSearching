@@ -1,0 +1,13 @@
+<script>
+	safari.application.addEventListener("beforeSearch", function (event) {
+            if (event.query) {
+			    var q = event.query;
+			    // this is assuming I will never search for something with a
+			    // slash or a period inside
+			    if (q.indexOf("/") != -1 || q.indexOf(".") != -1) {
+	                safari.application.activeBrowserWindow.activeTab.url = "http://" + q;
+    	            event.preventDefault();
+			    }
+            }
+        }, false);
+</script>
